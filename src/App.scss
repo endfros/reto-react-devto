@@ -1,0 +1,205 @@
+.main-navigation {
+  background-color: var(--sidebar-background-hover);
+  box-shadow: var(--element-box-shadow);
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+}
+.desktop-navbar {
+  display: flex;
+  max-width: var(--lg-max-width);
+  margin: 0 auto;
+  justify-content: space-between;
+  &__left {
+    display: flex;
+    > * + * {
+      margin-left: 0.75rem;
+    }
+    &__image {
+      width: 3.125rem;
+      height: 2.5rem;
+    }
+    &__search {
+      display: flex;
+      box-shadow: var(--search-box-shadow);
+      padding: 0.35rem;
+      border-radius: 0.35rem;
+      width: 26.25rem;
+      justify-content: space-between;
+      &:focus-within {
+        outline: 1.5px solid var(--text-blue);
+      }
+      & input {
+        border: none;
+        &:focus {
+          outline: none;
+        }
+      }
+      & button {
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    > * + * {
+      margin-left: 0.5rem;
+    }
+    & button:not(&__create-post) {
+      background-color: transparent;
+      border: none;
+    }
+    &__create-post {
+      background-color: transparent;
+      border: none;
+      border: 1px solid var(--text-blue);
+      color: var(--text-blue);
+      border-radius: 0.35rem;
+      padding: 0.25rem 0.75rem;
+    }
+    &__image {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 9999px;
+    }
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 240px 2fr 1fr;
+  margin: 0 auto;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: var(--lg-max-width);
+  gap: 1rem;
+}
+
+.navbars {
+  color: var(--text);
+}
+
+.navbar {
+  margin-top: 1rem;
+  &__title {
+    padding: var(--link-title-padding);
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  &__list-item {
+    border-radius: 0.35rem;
+    cursor: pointer;
+    &:hover {
+      color: var(--text-blue);
+      text-decoration: underline;
+      background-color: var(--navbar-background-hover);
+    }
+  }
+  &__navigation-item {
+    padding: var(--link-padding);
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+  }
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.post {
+  box-shadow: var(--element-box-shadow);
+  background-color: var(--sidebar-background-hover);
+  display: flex;
+  column-gap: 0.5rem;
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+  &__image {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 9999px;
+  }
+  &__user {
+    font-size: 0.875rem;
+    &__time {
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+  }
+  &__title {
+    font-size: 1.875rem;
+    font-weight: 600;
+  }
+  &__tags {
+    display: flex;
+    column-gap: 1rem;
+    color: var(--text-light);
+    font-size: 0.875rem;
+  }
+  &__interactions {
+    display: flex;
+    margin-top: 1.25rem;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    & button {
+      color: var(--text-light);
+      background-color: transparent;
+      border: none;
+    }
+    &__reading {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  background-color: var(--sidebar-background);
+  border-radius: 0.25rem;
+  box-shadow: var(--element-box-shadow);
+  &__title {
+    padding: var(--element-padding);
+    border-bottom: var(--border-bottom-styles);
+    font-weight: 500;
+    color: var(--black);
+    font-size: 1.25rem;
+  }
+}
+
+.sidebar-element {
+  padding: var(--element-padding);
+  border-bottom: var(--border-bottom-styles);
+  color: var(--text);
+  &:hover {
+    color: var(--text-blue);
+    cursor: pointer;
+    background-color: var(--sidebar-background-hover);
+  }
+  &__category {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    padding-top: 0.25rem;
+  }
+  &__new-tag-wrapper {
+    padding-top: 0.25rem;
+  }
+  &__new-tag {
+    max-width: max-content;
+    border-radius: 0.2rem;
+    background-color: var(--yellow);
+    color: var(--yellow-dark);
+    font-size: 0.875rem;
+    padding: 0.25rem;
+    line-height: 1;
+  }
+}
