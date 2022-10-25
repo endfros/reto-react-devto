@@ -17,12 +17,8 @@ function App() {
               src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
               alt="Dev.to Logo"
             />
-            <div className="desktop-navbar__left__search hidden md:flex border border-gray-300 h-auto p-2 rounded-md w-[420px] justify-between focus-within:outline-1 focus-within:outline outline-blue-500">
-              <input
-                className="flex-grow focus:outline-0"
-                type="text"
-                placeholder="Search..."
-              />
+            <div className="desktop-navbar__left__search ">
+              <input type="text" placeholder="Search..." />
               <button>
                 <SearchIcon />
               </button>
