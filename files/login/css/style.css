@@ -1,0 +1,179 @@
+*{
+    box-sizing: border-box;
+}
+
+.background{
+    width: 1200px;
+    height: 780px;
+    background-color: #F5F5F5;
+}
+
+.form{
+    background-color: white;
+    width: 750px;
+    height: 750px;
+    align-items: center;
+   border-radius: 4px;
+    position: fixed;
+    top: 10px;
+    left: 210px;  
+}
+
+.wellcome{
+    margin-top: 30px;
+    margin-left: 180px;
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+.comm{
+    margin-left: 160px;
+    font-size: 17px;
+}
+
+.foremimg{
+    width: 24px;
+    height: 24px;
+}
+
+.apple{
+    position: absolute;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    align-content: center;
+    width: 650px;
+    right: 50px; 
+    height: 40px;
+}
+
+.manzana{
+    position: absolute;
+    
+    height: 16px;
+    width: 16px;
+    left: 220px;
+    top: 10px;
+}
+
+.forem{
+    position: absolute;
+    background-color: #05313B;
+    color: white;
+    border-radius: 4px;
+    align-content: center;
+    width: 650px;
+    right: 50px;
+    height: 40px;
+    margin-top: 50px;
+}
+
+.foremimg{
+    position: absolute;
+    
+    height: 16px;
+    width: 16px;
+    left: 220px;
+    top: 10px;
+}
+
+.git{
+    position: absolute;
+    background-color: #424242;
+    color: white;
+    border-radius: 4px;
+    align-content: center;
+    width: 650px;
+    right: 50px;
+    height: 40px;
+    margin-top: 100px;
+}
+
+.gitimg{
+    position: absolute;
+    
+    height: 16px;
+    width: 16px;
+    left: 220px;
+    top: 10px;
+}
+.twit{
+    position: absolute;
+    background-color: #3196F2;
+    color: white;
+    border-radius: 4px;
+    
+    width: 650px;
+    right: 50px;
+    height: 40px;
+    margin-top: 150px;
+}
+
+.twitimg{
+    position: absolute;
+    
+    height: 16px;
+    width: 16px;
+    left: 220px;
+    top: 10px;
+}
+
+
+.have{
+    margin-top: 220px;
+    margin-left: 200px;
+}
+
+.ema{
+    font-size: 20px;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+.email{
+    margin-left: 50px;
+    width: 650px;
+    height: 40px;
+    border-radius: 4px;
+    border-color: #3B49DF;
+}
+
+.pass{
+    font-size: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.password{
+    margin-left: 50px;
+    width: 650px;
+    height: 40px;
+    border-radius: 4px;
+    border-color: #3B49DF;
+    position: absolute;
+}
+
+.check{
+    margin-top: 60px;
+    position: absolute;
+    margin-left: 50px;
+    
+}
+
+.cont{
+    margin-top: 100px;
+    width: 650px;
+    height: 40px;
+    margin-left: 50px;
+    position: absolute;
+    border-radius: 4px;
+    background-color: #3B49DF;
+    color: white;
+}
+
+.dev{
+    margin-top: 190px;
+    position: absolute;
+    margin-left: 300px;
+}
