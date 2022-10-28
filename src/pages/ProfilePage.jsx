@@ -8,43 +8,43 @@ import twitter from "../assets/icons8-twitter.svg";
 
 export const ProfilePage = () => {
   return (
-    <nav class="background">
-      <section class="negro"></section>
-      <section class="form">
-        <img class="neo" src={neov} alt="" srcset="" />
+    <nav classname="background">
+      <section classname="negro"></section>
+      <section classname="form">
+        <img classname="neo" src={neov} alt="" srcset="" />
 
         <section>
-          <button class="folow">Follow</button>
+          <button classname="folow">Follow</button>
         </section>
 
         <section>
-          <h1 class="name">Nevo David</h1>
-          <section class="contname">
-            <p class="description">
+          <h1 classname="name">Nevo David</h1>
+          <section classname="contname">
+            <p classname="description">
               Growth Manager at Novu - The 1st Open-Source Notification
               Infraestructure | Full Stack Developer | Team Leader
             </p>
           </section>
-          <p class="born">
-            <img class="hb" src={cumpleanios30} alt="" />
+          <p classname="born">
+            <img classname="hb" src={cumpleanios30} alt="" />
             Joined on 22 Feb 2022
           </p>
 
-          <a class="enlace" href="">
+          <a classname="enlace" href="#">
             {" "}
-            <img class="enlac" src={enlaceExterno} alt="" /> https://novu.co
+            <img classname="enlac" src={enlaceExterno} alt="" /> https://novu.co
           </a>
 
-          <a href="">
-            <img class="git" src={github} alt="" />
+          <a href="#">
+            <img classname="git" src={github} alt="" />
           </a>
-          <a href="">
-            <img class="twit" src={twitter} alt="" />
+          <a href="#">
+            <img classname="twit" src={twitter} alt="" />
           </a>
 
           <hr />
-          <p class="work">Work</p>
-          <p class="gow">Grow Manager @ Novu</p>
+          <p classname="work">Work</p>
+          <p classname="gow">Grow Manager @ Novu</p>
         </section>
       </section>
     </nav>

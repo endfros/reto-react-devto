@@ -1,12 +1,45 @@
 import React from "react";
 import { ReactComponent as HomeIcon } from "../assets/home.svg";
 import profilePicture from "../assets/pp.webp";
-import { DefaultLayout } from "../layout/DefaultLayout";
+import { ReactComponent as SearchIcon } from "../assets/search.svg";
+import { ReactComponent as BellIcon } from "../assets/bell.svg";
 import "../App.scss";
 
 export const HomePage = () => {
   return (
-    <DefaultLayout>
+    <>
+      <nav className="main-navigation">
+        <section className="desktop-navbar">
+          <section className="desktop-navbar__left">
+            <img
+              className="desktop-navbar__left__image"
+              src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
+              alt="Dev.to Logo"
+            />
+            <div className="desktop-navbar__left__search ">
+              <input type="text" placeholder="Search..." />
+              <button>
+                <SearchIcon />
+              </button>
+            </div>
+          </section>
+          <section className="desktop-navbar__actions">
+            <button className="desktop-navbar__actions__create-post">
+              Create Post
+            </button>
+            <button>
+              <BellIcon />
+            </button>
+            <button>
+              <img
+                className="desktop-navbar__actions__image h-8 w-8 rounded-full"
+                src="https://res.cloudinary.com/practicaldev/image/fetch/s--s6Axi-46--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/174537/25c17f15-3c29-4947-82dd-1a0b25eb6d21.png"
+                alt="User avatar"
+              />
+            </button>
+          </section>
+        </section>
+      </nav>
       <section className="layout">
         <aside className="navbars">
           <nav className="navbar">
@@ -322,6 +355,6 @@ export const HomePage = () => {
           </section>
         </aside>
       </section>
-    </DefaultLayout>
+    </>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+// import { foto } from "../assets/resized_logo_UQww2soKuUsjaOGNB38o.png";
 
 export const PostPage = () => {
   return (
@@ -6,11 +7,7 @@ export const PostPage = () => {
       <nav classname="d-flex justify-content-between align-items-center">
         <div classname="d-flex justify-content-start align-items-center">
           <a href="../index.html">
-            <img
-              classname="devimg"
-              src="./assets/resized_logo_UQww2soKuUsjaOGNB38o.png"
-              alt=""
-            />
+            <img classname="devimg" alt="" />
           </a>
           <p classname="create">Create Post</p>
         </div>
