@@ -4,6 +4,7 @@ import React from "react";
 export const PostPage = () => {
   return (
     <div classnameName="App">
+      <h1>jfdkasl</h1>
       <nav classname="d-flex justify-content-between align-items-center">
         <div classname="d-flex justify-content-start align-items-center">
           <a href="../index.html">
