@@ -1,120 +1,119 @@
 import React from "react";
+import "./post.css"
+
+import devimgn from "../components/assets-post/resized_logo_UQww2soKuUsjaOGNB38o.png";
+import link from "../components/assets-post/icons8-enlazar-16.png"
+import numlist from "../components/assets-post/icons8-lista-numerada-26.png"
+import vistgen from "../components/assets-post/icons8-vista-general-3-30.png"
+import lamuda from "../components/assets-post/icons8-h-26.png"
+import quote from "../components/assets-post/icons8-quote-left-24.png"
+import code from "../components/assets-post/icons8-code-50.png"
+import codeblock from "../components/assets-post/icons8-placeholder-thumbnail-xml-24.png"
+import tuerca from "../components/assets-post/icons8-production-order-32.png"
 // import { foto } from "../assets/resized_logo_UQww2soKuUsjaOGNB38o.png";
 
 export const PostPage = () => {
   return (
-    <div classnameName="App">
-      <h1>jfdkasl</h1>
-      <nav classname="d-flex justify-content-between align-items-center">
-        <div classname="d-flex justify-content-start align-items-center">
+    <div className="App">
+      
+        
+      
+      <nav className="d-flex justify-content-between align-items-center">
+        <div className="graycontain">
           <a href="../index.html">
-            <img classname="devimg" alt="" />
+            <img src={devimgn} className="devimg"  alt="" />
           </a>
-          <p classname="create">Create Post</p>
+          <p className="create">Create Post</p>
         </div>
-        <div classname="">
-          <button type="button" classname="edit">
+        <div className="">
+          <button type="button" className="edit">
             Edit
           </button>
-          <button type="button" classname="preview">
+          <button type="button" className="preview">
             Preview
           </button>
         </div>
-        <a classname="" href="../index.html">
-          <button type="button" classname="preview">
+        <a className="" href="../index.html">
+          <button type="button" className="xpreview">
             X
           </button>
         </a>
       </nav>
-      <div classname="d-flex flex-column align-items-center">
-        <section classname="containerpost rounded">
-          <div classname="d-flex align-items-center">
+      <div className="d-flex flex-column align-items-center">
+        <section className="containerpost rounded">
+          <div className="d-flex align-items-center">
             <label
-              for="image-input"
-              classname="btn btn-outline-secondary text-dark add-img p-2 mb-2 order-1"
+              htmlFor="image-input"
+              className="btn btn-outline-secondary text-dark add-img p-2 mb-2 order-1"
             >
-              <i classname="fa fa-cloud-upload"></i> Add a cover image
+              <i className="addcover"></i > Add a cover image
             </label>
-            <label
-              for="image-input"
-              classname="btn btn-outline-secondary text-dark change-img p-2 mb-2 mx-3 order-3"
-            >
-              <i classname="fa fa-cloud-upload"></i> Change
-            </label>
-            <input
-              classname=""
-              type="file"
-              id="image-input"
-              accept="image/jpeg, image/png, image/jpg"
-            />
-            <button classname="btn btn-outline-danger remove-img p-2 mb-2 mx-3 order-4">
-              Remove
-            </button>
-            <div id="display-image" classname="order-2 mx-5 ps-3"></div>
+            
+            <div id="display-image" className="order-2 mx-5 ps-3"></div>
           </div>
           <input
-            classname="contenido"
+            className="contenido"
             type="text"
             placeholder="New post title here..."
             id="title"
             required
           />
           <input
-            classname="tags"
+            className="tags"
             id="tags"
             type="text"
             placeholder="Add up to 4 tags"
             required
           />
-          <nav classname="d-flex navbar bg-light">
-            <div classname="container-fluid">
-              {/* <a classname="navbar-brand d-flex"> */}
+          <nav className="d-flex navbar bg-light">
+            <div className="container-fluid">
+              {/* <a className="navbar-brand d-flex"> */}
               <button
                 type="button"
-                classname="btn-btn-light1"
+                className="btn-btn-light1"
                 //   style="font-size: 20px"
               >
-                B<figcaption classname="bold">Bold CTRL +B</figcaption>
+                B<figcaption className="bold">Bold CTRL +B</figcaption>
               </button>
               <button
                 type="button"
-                classname="btn-btn-light2"
+                className="btn-btn-light2"
                 //   style="font-size: 20px"
               >
-                I<figcaption classname="italic">Italic CRTL + I</figcaption>
+                I<figcaption className="italic">Italic CRTL + I</figcaption>
               </button>
-              <button type="button" classname="btn-btn-light3">
-                <img src="./assets/icons8-enlazar-16.png" alt="" />
-                <figcaption classname="link">Link CTRL + K</figcaption>
+              <button type="button" className="btn-btn-light3">
+                <img src={link} alt="" />
+                <figcaption className="link">Link CTRL + K</figcaption>
               </button>
-              <button type="button" classname="btn-btn-light4">
-                <img src="./assets/icons8-lista-numerada-26.png" alt="" />
-                <figcaption classname="ordered">Ordered list</figcaption>
+              <button type="button" className="btn-btn-light4">
+                <img src={numlist} alt="" />
+                <figcaption className="ordered">Ordered list</figcaption>
               </button>
-              <button type="button" classname="btn-btn-light5">
-                <img src="./assets/icons8-vista-general-3-30.png" alt="" />
-                <figcaption classname="unordered">Unordered list</figcaption>
+              <button type="button" className="btn-btn-light5">
+                <img src={vistgen} alt="" />
+                <figcaption className="unordered">Unordered list</figcaption>
               </button>
-              <button type="button" classname="btn-btn-light6">
-                <img src="./assets/icons8-h-26.png" alt="" />
-                <figcaption classname="heading">Heading</figcaption>
+              <button type="button" className="btn-btn-light6">
+                <img src={lamuda} alt="" />
+                <figcaption className="heading">Heading</figcaption>
               </button>
-              <button type="button" classname="btn-btn-light7">
-                <img src="./assets/icons8-quote-left-24.png" alt="" />
-                <figcaption classname="quote">Quote</figcaption>
+              <button type="button" className="btn-btn-light7">
+                <img src={quote} alt="" />
+                <figcaption className="quote">Quote</figcaption>
               </button>
-              <button type="button" classname="btn-btn-light8">
-                <img src="./assets/icons8-picture-48.png" alt="" />
-                <figcaption classname="upload">Upload image</figcaption>
+              <button type="button" className="btn-btn-light8">
+                <img src={code} alt="" />
+                <figcaption className="upload">Upload image</figcaption>
               </button>
-              <button type="button" classname="btn-btn-light9">
-                <img src="./assets/icons8-menú-2-24.png" alt="" />
+              <button type="button" className="btn-btn-light9">
+                <img src={codeblock} alt="" />
               </button>
               {/* </a> */}
             </div>
           </nav>
           <textarea
-            classname="contenido2"
+            className="contenido2"
             name=""
             id="content"
             cols="300"
@@ -123,18 +122,19 @@ export const PostPage = () => {
           ></textarea>
         </section>
       </div>
-      <div classname="">
-        <article classname="container-buttons d-flex align-items-center">
-          <button classname="publish" id="btnAdd">
+      <div className="">
+        <article className="container-buttons d-flex align-items-center">
+          <button className="publish" id="btnAdd">
             Publish
           </button>
-          <button classname="savedraft">Save draft</button>
-          <button classname="tuerca">
-            <img src="./assets/icons8-production-order-32.png" alt="" />
+          <button className="savedraft">Save draft</button>
+          <button className="tuerca">
+            <img src={tuerca} alt="" />
           </button>
-          <button classname="revert">Revert new changes</button>
+          <button className="revert">Revert new changes</button>
         </article>
       </div>
+      
     </div>
   );
 };
