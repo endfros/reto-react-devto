@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { PostPage } from "./pages/PostPage";
-
-// import "./App.scss";
+// import { Navbar } from "./components/Navbar";
+import { DefaultLayout } from "./layout/DefaultLayout";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/user/me" element={<ProfilePage />} />
         <Route path="/post" element={<PostPage />} />
+        <Route path="/navbar" element={<DefaultLayout />} />
       </Routes>
     </BrowserRouter>
   );
