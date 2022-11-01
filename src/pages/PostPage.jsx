@@ -1,5 +1,6 @@
 import React from "react";
-import "./post.css"
+import "./post.css";
+import  { DefaultLayout } from "../layout/DefaultLayout"
 
 import devimgn from "../components/assets-post/resized_logo_UQww2soKuUsjaOGNB38o.png";
 import link from "../components/assets-post/icons8-enlazar-16.png"
@@ -14,6 +15,9 @@ import tuerca from "../components/assets-post/icons8-production-order-32.png"
 
 export const PostPage = () => {
   return (
+
+  <DefaultLayout>
+
     <div className="App">
       
         
@@ -136,5 +140,6 @@ export const PostPage = () => {
       </div>
       
     </div>
+  </DefaultLayout>
   );
 };
