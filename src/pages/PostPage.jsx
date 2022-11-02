@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./post.css";
-import  { DefaultLayout } from "../layout/DefaultLayout"
+import  { DefaultLayout } from "../layout/DefaultLayout";
 
 import devimgn from "../components/assets-post/resized_logo_UQww2soKuUsjaOGNB38o.png";
 import link from "../components/assets-post/icons8-enlazar-16.png"
@@ -13,7 +13,32 @@ import codeblock from "../components/assets-post/icons8-placeholder-thumbnail-xm
 import tuerca from "../components/assets-post/icons8-production-order-32.png"
 // import { foto } from "../assets/resized_logo_UQww2soKuUsjaOGNB38o.png";
 
-export const PostPage = () => {
+
+
+
+export const PostPage = (props) => {
+  const [postTitl, setPosttitl] = useState ("");
+  const [postCommt, setCommt] = useState ("")
+  
+
+
+const publish = (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const title = formData.get ("posttitle");
+  const comment = formData.get ("comment");
+  fetch ("http://localhost:5173/post", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json; charset=UTF-8"
+    },
+    body: JSON.stringify({title, comment, userId})
+  })
+  .then ((res) => res.json())
+  .then ((data) => setPosttitl ([...postTitl, data]));
+}
+
+
   return (
 
   <DefaultLayout>
@@ -55,13 +80,16 @@ export const PostPage = () => {
             
             <div id="display-image" className="order-2 mx-5 ps-3"></div>
           </div>
+          <form onSubmit={ev =>{ev.preventDefault(); setPosttitl(ev.target.posttitle.value)}}>
           <input
             className="contenido"
+            name="posttitle"
             type="text"
             placeholder="New post title here..."
             id="title"
             required
           />
+          </form>
           <input
             className="tags"
             id="tags"
@@ -116,19 +144,22 @@ export const PostPage = () => {
               {/* </a> */}
             </div>
           </nav>
-          <textarea
+          <form  onSubmit={ev => {ev.preventDefault(); setCommt(ev.target.comment.value)}}>
+          <input
             className="contenido2"
-            name=""
+            name="comment"
+            type="text"
             id="content"
-            cols="300"
-            rows="180"
             placeholder="Write your post content here..."
-          ></textarea>
+            
+            
+          ></input>
+          </form>
         </section>
       </div>
       <div className="">
         <article className="container-buttons d-flex align-items-center">
-          <button className="publish" id="btnAdd">
+          <button name="publish" className="publish" id="btnAdd">
             Publish
           </button>
           <button className="savedraft">Save draft</button>
