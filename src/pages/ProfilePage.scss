@@ -1,0 +1,29 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+.userFeed{
+    width:1000px;
+    // position: absolute;
+    display:flex;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+
+.feedSection{
+    display:inline-block;
+    width:650px;
+  }
+  
+  .feed {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+    }
+    
+.main{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}

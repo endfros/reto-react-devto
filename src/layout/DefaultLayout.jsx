@@ -4,7 +4,7 @@ import { Navbar } from "../components/Navbar";
 export const DefaultLayout = (props) => {
   return (
     <>
-      <Navbar />;
+      <Navbar />
       <main>
         <div>{props.children}</div>
       </main>

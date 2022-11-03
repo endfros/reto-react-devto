@@ -1,0 +1,107 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+.background{
+    width: 1200px;
+    height: 780px;
+    background-color: #F5F5F5;
+}
+
+.header{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.banner{
+    background-color: black;
+    width: 100vw;
+    height: 125px;
+}
+
+.profilePicture{
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    margin-top: 4px;
+    border-radius: 50%;
+    border: 8px solid black;
+}
+.bio{
+    margin-top: -55px;
+    background-color: white;
+    width: 1000px;
+    border-radius: 6px;
+    border:1px solid lightgray;
+}
+
+.btnDiv{
+    display:flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+    margin-top: 23px;
+}
+
+.btn__follow{
+    height: 40px;
+    color: white;
+    background-color: #3B49DF;
+    padding:0 15px;
+    position: relative;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+
+    &:hover{
+        cursor: pointer;
+        background-color: #2F3AB2
+    }
+}
+.name{
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.bio-body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 18px;
+    p{
+        width:700px;
+    }
+}
+
+.moreInfo{
+    padding:40px;
+    .info{
+        color:gray;
+        height:20px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+     .logo{
+        display: inline-block;
+        height:24px;
+        margin-right: 8px;
+        filter: invert(46%) sepia(13%) saturate(11%) hue-rotate(329deg) brightness(92%) contrast(90%);
+     }   
+     .joined{
+        font-size: 14px;
+     }
+    }
+}
+
