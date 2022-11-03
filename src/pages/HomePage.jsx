@@ -1,4 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+
+import { PostCard } from "../components/PostCard";
 import "./homePage.scss";
 import { ReactComponent as HomeIcon } from "../assets/home.svg";
 import profilePicture from "../assets/pp.webp";
@@ -37,6 +40,8 @@ import { ReactComponent as ConfigIcon } from "../assets/configIcon.svg"
 import "../App.scss";
 
 export const HomePage = () => {
+  const [posts, setPosts] = useState([])
+
   return (
     <DefaultLayout>
       <section className="layout">

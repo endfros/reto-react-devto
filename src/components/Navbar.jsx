@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom"
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { ReactComponent as BellIcon } from "../assets/bell.svg";
 import { ReactComponent as HomeIcon } from "../assets/home.svg";
@@ -189,11 +190,13 @@ export const Navbar = () => {
               </ul>
             </section>
           </div>
+          <Link to="/">
           <img
             className="desktop-navbar__left__image"
             src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
             alt="Dev.to Logo"
           />
+          </Link>
           <div className="desktop-navbar__left__search ">
             <input type="text" placeholder="Search..." />
             <button>
@@ -202,24 +205,27 @@ export const Navbar = () => {
           </div>
         </section>
         <section className="desktop-navbar__actions">
-          <button className="desktop-navbar__actions__create-post">
-            Create Post
-          </button>
+          {/* <button className="desktop-navbar__actions__create-post">
+            <Link to="/create-post">Create Post</Link>
+          </button> */}
           <div className="desktop-navbar__left__searchIcon">
             <button>
               <SearchIcon />
             </button>
           </div>
-          <button>
-            <BellIcon />
+          <button className="desktop-navbar__actions__create-account">
+            <Link to="/register">Create Account</Link>
           </button>
-          <button>
+          {/* <button>
+            <BellIcon />
+          </button> */}
+          {/* <button>
             <img
               className="desktop-navbar__actions__image h-8 w-8 rounded-full"
               src="https://res.cloudinary.com/practicaldev/image/fetch/s--s6Axi-46--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/174537/25c17f15-3c29-4947-82dd-1a0b25eb6d21.png"
               alt="User avatar"
             />
-          </button>
+          </button> */}
         </section>
       </section>
     </nav>

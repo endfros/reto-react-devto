@@ -1,0 +1,116 @@
+*:focus {
+    outline: none;
+}
+
+
+.createPost__nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: rgb(206, 206, 206);
+    background-color: #F4F5F4;
+    gap: 20px;
+    height: 56px;
+
+    &__edit{
+        font-weight: 500;
+    }
+
+    &__preview{
+        font-weight: 300;
+    }
+
+    & button{
+        padding-top: 7px;
+        background-color: transparent;
+        border: none;
+    }
+}
+
+.createPost__content{
+    background-color: white;
+    height: 100vh;
+    padding: 0.8rem;
+    &__imageButton{
+        background-color: transparent;
+        padding: 6px 14px 6px 14px;
+        border: solid;
+        border-width: 2.5px;
+        border-color: rgb(206, 206, 206);
+        border-radius: 6px;
+    }
+    &__title{
+        padding: 10px 0 ;
+        border: none;
+        max-width: 90vw;
+        background-color: transparent;
+        font-size: xx-large;
+        font-weight: 600;
+        &::placeholder{
+            color: rgb(77, 77, 77)
+        }
+    }
+    &__tags{
+        border: none;
+        background-color: transparent;
+    }
+    &__content{
+        border: none;
+        width: 90vw;
+        background-color: transparent;
+        font-size: large;
+        font-family: 'Courier New', Courier, monospace;
+        &::placeholder{
+            color: rgb(77, 77, 77)
+        }
+    }
+}
+
+.createPost__footer{
+    padding: 8px;
+    background-color: #F4F5F4;
+    display: flex;
+    border-top: solid;
+    border-width: 1px;
+    border-color: rgb(206, 206, 206);
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+
+    &__publish{
+        color: white;
+        background-color: #3B4ADF;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-radius: 7px;
+        border: none;
+    }
+
+    &__button{
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+    }
+
+    &__button--revert{
+        font-weight: 300;
+        font-size: 14px;
+    }
+
+    &__button--save{
+        font-weight: 300;
+    }
+
+
+}

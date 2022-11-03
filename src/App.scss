@@ -72,11 +72,18 @@
     }
     & button:not(&__create-post) {
       background-color: transparent;
-      border: none;
+
     }
     &__create-post {
       background-color: transparent;
       border: none;
+      border: 1px solid var(--text-blue);
+      color: var(--text-blue);
+      border-radius: 0.35rem;
+      padding: 0.25rem 0.75rem;
+    }
+    &__create-account {
+      background-color: transparent;
       border: 1px solid var(--text-blue);
       color: var(--text-blue);
       border-radius: 0.35rem;
