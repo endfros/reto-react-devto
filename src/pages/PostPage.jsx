@@ -26,16 +26,18 @@ const publish = (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const title = formData.get ("posttitle");
-  const comment = formData.get ("comment");
+  const coment = formData.get ("comment");
   fetch ("http://localhost:5173/post", {
     method: "POST",
     headers: {
       "content-type": "application/json; charset=UTF-8"
     },
-    body: JSON.stringify({title, comment, userId})
+    body: JSON.stringify({title, coment, userId})
   })
   .then ((res) => res.json())
   .then ((data) => setPosttitl ([...postTitl, data]));
+
+  
 }
 
 
