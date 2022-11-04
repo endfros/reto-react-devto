@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.stats{
+    border-radius: 10px;
+    background-color: #FAFAFA;
+    width: 350px;
+    border:1px solid #EAEAEA;
+    padding:10px;
+    color:#404040;
+    margin-right: 15px;
+    height: 160px;
+    
+    .stat{
+        display:flex;
+        align-items: center;
+        padding:10px;
+    }
+    
+    .imgStats{
+        display: inline;
+        margin-right: 12px;
+        height: 25px;
+        filter: invert(61%) sepia(13%) saturate(15%) hue-rotate(8deg) brightness(88%) contrast(80%);
+    }
+}
