@@ -29,7 +29,7 @@ import { ReactComponent as GithubIcon } from "../assets/githubIcon.svg"
 import { ReactComponent as InstagramIcon } from "../assets/instagramIcon.svg"
 import { ReactComponent as TwitchIcon } from "../assets/twitchIcon.svg"
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -205,27 +205,48 @@ export const Navbar = () => {
           </div>
         </section>
         <section className="desktop-navbar__actions">
-          {/* <button className="desktop-navbar__actions__create-post">
+          {props.token && (
+            <button className="desktop-navbar__actions__create-post">
             <Link to="/create-post">Create Post</Link>
-          </button> */}
+            </button>
+          )}
+
           <div className="desktop-navbar__left__searchIcon">
             <button>
               <SearchIcon />
             </button>
           </div>
-          <button className="desktop-navbar__actions__create-account">
-            <Link to="/register">Create Account</Link>
+          {!props.token && (
+            <button className="desktop-navbar__actions__create-account">
+                <Link to="/register">Create Account</Link>
+            </button>
+          )}
+
+          {props.token && (
+           <button className="desktop-navbar__actions__create-account" onClick={() => props.setToken(null)}>Log Out</button>
+          )}
+          {!props.token && (
+           <button className="desktop-navbar__actions__create-account" onClick={() => props.setToken(null)}>
+
+            <Link to="/login">
+              Log In
+            </Link>
           </button>
-          {/* <button>
-            <BellIcon />
-          </button> */}
-          {/* <button>
-            <img
-              className="desktop-navbar__actions__image h-8 w-8 rounded-full"
-              src="https://res.cloudinary.com/practicaldev/image/fetch/s--s6Axi-46--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/174537/25c17f15-3c29-4947-82dd-1a0b25eb6d21.png"
-              alt="User avatar"
-            />
-          </button> */}
+          )}
+          {props.token && (
+            <button className="desktop-navbar__actions__button">
+              <BellIcon />
+            </button>
+          )}
+          {props.token && (
+            <button className="desktop-navbar__actions__button">
+              <img
+                className="desktop-navbar__actions__image h-8 w-8 rounded-full"
+                src="https://res.cloudinary.com/practicaldev/image/fetch/s--s6Axi-46--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/174537/25c17f15-3c29-4947-82dd-1a0b25eb6d21.png"
+                alt="User avatar"
+              />
+            </button>
+          )}
         </section>
       </section>
     </nav>

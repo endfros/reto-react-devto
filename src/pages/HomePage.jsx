@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import { PostCard } from "../components/PostCard";
 import "./homePage.scss";
@@ -39,7 +40,7 @@ import { ReactComponent as ConfigIcon } from "../assets/configIcon.svg"
 
 import "../App.scss";
 
-export const HomePage = () => {
+export const HomePage = (props) => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
@@ -47,12 +48,11 @@ export const HomePage = () => {
     .then((res) => res.json())
     .then((data) => {
       setPosts(data.data.posts)
-      console.log(data.data.posts)
     })
   }, [])
 
   return (
-    <DefaultLayout>
+    <DefaultLayout token={props.token} setToken={props.setToken}>
       <section className="layout">
         <aside className="navbars">
           <nav className="navbar">
@@ -230,11 +230,13 @@ export const HomePage = () => {
                           <section>
                             <section className="post__user">
                               <p>{post.user.name}</p>
-                              <p className="post__user__time">Oct 24 (18 hours ago)</p>
+                              <p className="post__user__time">{post.date}</p>
                             </section>
-                            <h3 className="post__title">
-                              {post.title}
-                            </h3>
+                            <Link to={`/post/${post._id}`}>
+                              <h3 className="post__title">
+                                {post.title}
+                              </h3>
+                            </Link>
                             <section className="post__tags">
                               {post.hashtags.map((tag) => (
                                   <div>#{tag}</div>

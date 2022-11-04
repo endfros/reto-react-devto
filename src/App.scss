@@ -6,6 +6,10 @@
   top: 0;
 }
 
+.desktop-navbar__left__image{
+  display: flex;
+}
+
 .navbar__social-icons{
   padding-top: 1.8rem;
   padding-bottom: 1.8rem;
@@ -93,6 +97,10 @@
       width: 2rem;
       height: 2rem;
       border-radius: 9999px;
+    }
+    &__button{
+      display: flex;
+      border: none;
     }
   }
 }
@@ -348,7 +356,10 @@
       flex-direction: row;
     }
   }
-
+  
+  .desktop-navbar__left__image{
+    display: block;
+  }
 
   .desktop-navbar__left__sidebar.showSidebar{
     width: 100%;

@@ -1,145 +1,170 @@
-import React from "react";
-import "./post.css";
+import React, {useState, useEffect} from "react";
+
+import "./postPage.scss"
+import profilePicture from "../assets/pp.webp";
 import  { DefaultLayout } from "../layout/DefaultLayout"
 
-import devimgn from "../components/assets-post/resized_logo_UQww2soKuUsjaOGNB38o.png";
-import link from "../components/assets-post/icons8-enlazar-16.png"
-import numlist from "../components/assets-post/icons8-lista-numerada-26.png"
-import vistgen from "../components/assets-post/icons8-vista-general-3-30.png"
-import lamuda from "../components/assets-post/icons8-h-26.png"
-import quote from "../components/assets-post/icons8-quote-left-24.png"
-import code from "../components/assets-post/icons8-code-50.png"
-import codeblock from "../components/assets-post/icons8-placeholder-thumbnail-xml-24.png"
-import tuerca from "../components/assets-post/icons8-production-order-32.png"
-// import { foto } from "../assets/resized_logo_UQww2soKuUsjaOGNB38o.png";
+import { ReactComponent as LikeIcon } from "../assets/likeIcon.svg";
+import { ReactComponent as CommentIcon } from "../assets/commentIcon.svg";
+import { ReactComponent as SaveIcon } from "../assets/saveIcon.svg";
+import { ReactComponent as OptionsIcon } from "../assets/optionsIcon.svg";
 
-export const PostPage = () => {
+import { useParams } from 'react-router-dom';
+
+export const PostPage = (props) => {
+
+  const val = useParams()
+
+  const [post, setPost] = useState([])
+  const [user, setUser] = useState()
+  const [bio, setBio] = useState()
+  const [date, setDate] = useState()
+  const [comment, setComment] = useState()
+  const [commentNumber, setCommentNumber] = useState()
+  const [nationality, setNationality] = useState()
+  const [hashtags, setHashtags] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/post/${val.postId}`)
+        .then((res) =>res.json())
+        .then(post => {
+          setPost(post.data.cards)
+          setUser(post.data.cards.user.name)
+          setBio(post.data.cards.user.bio)
+          setNationality(post.data.cards.user.nationality)
+          setDate(post.data.cards.user.date)
+          setHashtags(post.data.cards.hashtags)
+          setCommentNumber(post.data.cards.comment.length)
+          setComment(post.data.cards.comment)
+        })
+  },[])
+
+  const addComment = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const text = formData.get("text")
+
+    const reactions = 2
+
+    fetch(`http://localhost:8080/comment/post/${val.postId}`,{
+      method: "POST",
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': props.token,
+      },
+      body: JSON.stringify(({
+          text,
+          reactions
+      }))
+  })
+   .then((res) => res.json())
+   .then((res) => {
+      console.log(res)
+   })
+
+  }
+
   return (
-
   <DefaultLayout>
+    <div className="post-layout">
+      <aside className="aside-left">
+          <button className="post__aside-icon"><LikeIcon/></button>
+          <span>{post.reactions}</span>
+          <button className="post__aside-icon"><CommentIcon/></button>
+          <span>{commentNumber}</span>
+          <button className="post__aside-icon"><SaveIcon/></button>
+          <button className="post__aside-icon"><OptionsIcon/></button>
+      </aside>
+      <article className="post">
+                            <img
+                              className="post__image"
+                              src={profilePicture}
+                              alt="User avatar"
+                            />
+                            <section>
+                              <section className="post__user">
+                                <p>{user}</p>
+                                <p className="post__user__time">Posted on: {post.date}</p>
+                              </section>
 
-    <div className="App">
-      
-        
-      
-      <nav className="d-flex justify-content-between align-items-center">
-        <div className="graycontain">
-          <a href="../index.html">
-            <img src={devimgn} className="devimg"  alt="" />
-          </a>
-          <p className="create">Create Post</p>
-        </div>
-        <div className="">
-          <button type="button" className="edit">
-            Edit
-          </button>
-          <button type="button" className="preview">
-            Preview
-          </button>
-        </div>
-        <a className="" href="../index.html">
-          <button type="button" className="xpreview">
-            X
-          </button>
-        </a>
-      </nav>
-      <div className="d-flex flex-column align-items-center">
-        <section className="containerpost rounded">
-          <div className="d-flex align-items-center">
-            <label
-              htmlFor="image-input"
-              className="btn btn-outline-secondary text-dark add-img p-2 mb-2 order-1"
-            >
-              <i className="addcover"></i > Add a cover image
-            </label>
-            
-            <div id="display-image" className="order-2 mx-5 ps-3"></div>
-          </div>
-          <input
-            className="contenido"
-            type="text"
-            placeholder="New post title here..."
-            id="title"
-            required
-          />
-          <input
-            className="tags"
-            id="tags"
-            type="text"
-            placeholder="Add up to 4 tags"
-            required
-          />
-          <nav className="d-flex navbar bg-light">
-            <div className="container-fluid">
-              {/* <a className="navbar-brand d-flex"> */}
-              <button
-                type="button"
-                className="btn-btn-light1"
-                //   style="font-size: 20px"
-              >
-                B<figcaption className="bold">Bold CTRL +B</figcaption>
-              </button>
-              <button
-                type="button"
-                className="btn-btn-light2"
-                //   style="font-size: 20px"
-              >
-                I<figcaption className="italic">Italic CRTL + I</figcaption>
-              </button>
-              <button type="button" className="btn-btn-light3">
-                <img src={link} alt="" />
-                <figcaption className="link">Link CTRL + K</figcaption>
-              </button>
-              <button type="button" className="btn-btn-light4">
-                <img src={numlist} alt="" />
-                <figcaption className="ordered">Ordered list</figcaption>
-              </button>
-              <button type="button" className="btn-btn-light5">
-                <img src={vistgen} alt="" />
-                <figcaption className="unordered">Unordered list</figcaption>
-              </button>
-              <button type="button" className="btn-btn-light6">
-                <img src={lamuda} alt="" />
-                <figcaption className="heading">Heading</figcaption>
-              </button>
-              <button type="button" className="btn-btn-light7">
-                <img src={quote} alt="" />
-                <figcaption className="quote">Quote</figcaption>
-              </button>
-              <button type="button" className="btn-btn-light8">
-                <img src={code} alt="" />
-                <figcaption className="upload">Upload image</figcaption>
-              </button>
-              <button type="button" className="btn-btn-light9">
-                <img src={codeblock} alt="" />
-              </button>
-              {/* </a> */}
+                              <h3 className="post__title--post">
+                                  {post.title}
+                              </h3>
+  
+                              <section className="post__tags">
+                                {hashtags.map((tag) => (
+                                    <div>#{tag}</div>
+                                ))}
+                              </section>
+
+                              <section className="post__content">
+                                  {post.body}
+                              </section>
+                              <section className="post__comments">
+                                <h2>Comments:</h2>
+                                  {comment?.map((com,index) => (
+                                    <div>{com.text}</div>
+                                  ))}
+                                <h2>Write a comment:</h2>
+                                <form className="post__comments__form" action="" onSubmit={addComment} >
+                                  <input name="text" type="text" className="post__comments__form--content" />
+                                  <input type="submit" className="card-profile__button" value="Post comment" />
+                                </form>
+                              </section>
+                            </section>
+      </article>
+      <aside className="aside-right">
+        <section className="card">
+          <div className="card-profile text-bg-white">
+            <img
+                className="post__image"
+                src={profilePicture}
+                alt="User avatar"
+            />
+
+            <h5 className="card-profile__title">{user}</h5>
+
+            <div className="">
+              <button type="button" className="card-profile__button">Follow</button>
             </div>
-          </nav>
-          <textarea
-            className="contenido2"
-            name=""
-            id="content"
-            cols="300"
-            rows="180"
-            placeholder="Write your post content here..."
-          ></textarea>
+
+            <small className="card-profile__info">
+              <ul className="list-group">
+                <li className="list-group-itemaside">
+                  <p className="fw-light">{bio}</p>
+                </li>
+                <li className="list-group-itemaside">
+                  <p className="">Nationality</p>
+                  <p className="">{nationality}</p>
+
+                </li>
+                <li className="list-group-itemaside">
+                  <p className="">EDUCATION</p>
+                  <p className="">University of New Brunswick</p>
+                </li>
+                <li className="list-group-itemaside">
+                  <p className="">JOINED</p>
+                  <p className="">{date}</p>
+                </li>
+              </ul>
+            </small>
+
+          </div>
+        <section>
+
+  </section>
         </section>
-      </div>
-      <div className="">
-        <article className="container-buttons d-flex align-items-center">
-          <button className="publish" id="btnAdd">
-            Publish
-          </button>
-          <button className="savedraft">Save draft</button>
-          <button className="tuerca">
-            <img src={tuerca} alt="" />
-          </button>
-          <button className="revert">Revert new changes</button>
-        </article>
-      </div>
-      
+      </aside>
+      <footer className="post__footer">
+      <button className="post__aside-icon"><LikeIcon/></button>
+          <span>{post.reactions}</span>
+          <button className="post__aside-icon"><CommentIcon/></button>
+          <span>{commentNumber}</span>
+          <button className="post__aside-icon"><SaveIcon/></button>
+          <button className="post__aside-icon"><OptionsIcon/></button>
+      </footer>
     </div>
+
   </DefaultLayout>
   );
 };

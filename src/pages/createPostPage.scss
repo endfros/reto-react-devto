@@ -2,13 +2,23 @@
     outline: none;
 }
 
+.form{
+    width: 100%;
+    left: 0;
+}
+
+.desktop-navbar__left__image{
+    display: none;
+}
 
 .createPost__nav{
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     border-bottom: solid;
+    width: 100%;
     border-width: 1px;
     border-color: rgb(206, 206, 206);
     background-color: #F4F5F4;
@@ -23,6 +33,10 @@
         font-weight: 300;
     }
 
+    &__title{
+        display: none;
+    }
+
     & button{
         padding-top: 7px;
         background-color: transparent;
@@ -31,8 +45,10 @@
 }
 
 .createPost__content{
+    display: flex;
+    flex-direction: column;
     background-color: white;
-    height: 100vh;
+    height: 87.5vh;
     padding: 0.8rem;
     &__imageButton{
         background-color: transparent;
@@ -113,4 +129,53 @@
     }
 
 
+}
+
+@media (min-width:768px){
+    .desktop-navbar__left__image{
+        display: flex;
+        align-self: start;
+        justify-self: start;
+    }
+
+    .createPost__nav__image{
+        position: absolute;
+        top: 55/2;
+        left: 0;
+        margin-left: 6px;
+    }
+
+    .createPost__nav__title{
+        display: flex;
+        margin-right: 57vw;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: inherit;
+        width: 80%;
+        left: 0;
+    }
+
+    .createPost__content{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        border: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: rgb(206, 206, 206);
+        padding: 20px;
+        &__imageButton{
+            width: 30%;
+        }
+    }
+}
+
+@media (min-width:1024px){
+    .createPost__nav__title{
+        display: flex;
+        margin-right: 68vw;
+    }
 }
