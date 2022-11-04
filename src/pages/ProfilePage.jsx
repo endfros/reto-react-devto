@@ -1,56 +1,70 @@
-import React from "react";
-import "./profilePage.scss";
-import cumpleanios30 from "../assets/icons8-cumpleaños-30.png";
-import neov from "../assets/neov.jpeg";
-import enlaceExterno from "../assets/icons8-enlace-externo.svg";
-import github from "../assets/icons8-github.svg";
-import twitter from "../assets/icons8-twitter.svg";
+import React, { useEffect, useState } from "react";
 import { DefaultLayout } from "../layout/DefaultLayout";
+import { Header } from "../components/profilePage/Header";
+import { UserStats } from "../components/profilePage/UserStats";
+import { Feed } from "../components/profilePage/Feed";
+import "./ProfilePage.scss";
 
-export const ProfilePage = () => {
+export const ProfilePage = (props) => {
+  // const { token } = props;
+  useEffect(() => {
+    fetch("http://localhost:8080/post?idUser=6349f4c2c7fdc3c53f06d59b")
+      // fetch("http://localhost:8080/posts", { headers: { Authorization: token } })
+      .then((res) => res.json())
+      .then((res) => {
+        setPosts(res.data.posts);
+        // console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    fetch("http://localhost:8080/writer/6349f4c2c7fdc3c53f06d59b")
+      .then((res) => res.json())
+      .then((res) => {
+        setUser(res.data.users);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    fetch("http://localhost:8080/comment?idUser=6349f4c2c7fdc3c53f06d59b")
+      .then((res) => res.json())
+      .then((res) => {
+        setComments(res.data.comment.length);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+  const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState([]);
+  const [comments, setComments] = useState(null);
   return (
     <DefaultLayout>
-      <nav className="background">
-        <section className="negro"></section>
-        <section className="form">
-          <img className="neo" src={neov} alt="" />
-
-          <section>
-            <button className="folow">Follow</button>
+      <main className="main">
+        <Header name={user.name} bio={user.bio} />
+        <div className="userFeed">
+          <UserStats comments={comments} posts={posts.length} />
+          <section className="feedSection">
+            <ul className="feed">
+              {posts.map((post) => (
+                <Feed
+                  key={post.id}
+                  title={post.title}
+                  hashtags={post.hashtags}
+                  reactions={post.reactions}
+                  readingTime={post.readingTime}
+                  date={post.date}
+                  user={post.user.name}
+                  comment={post.comment.length}
+                />
+              ))}
+            </ul>
           </section>
-
-          <section>
-            <h1 className="name">Nevo David</h1>
-            <section className="contname">
-              <p className="description">
-                Growth Manager at Novu - The 1st Open-Source Notification
-                Infraestructure | Full Stack Developer | Team Leader
-              </p>
-            </section>
-            <p className="born">
-              <img className="hb" src={cumpleanios30} alt="" />
-              Joined on 22 Feb 2022
-            </p>
-
-            <a className="enlace" href="#">
-              {" "}
-              <img className="enlac" src={enlaceExterno} alt="" />{" "}
-              https://novu.co
-            </a>
-
-            <a href="#">
-              <img className="git" src={github} alt="" />
-            </a>
-            <a href="#">
-              <img className="twit" src={twitter} alt="" />
-            </a>
-
-            <hr />
-            <p className="work">Work</p>
-            <p className="gow">Grow Manager @ Novu</p>
-          </section>
-        </section>
-      </nav>
+        </div>
+      </main>
     </DefaultLayout>
   );
 };
