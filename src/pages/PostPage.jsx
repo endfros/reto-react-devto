@@ -45,8 +45,11 @@ export const PostPage = (props) => {
     const text = formData.get("text")
 
     const reactions = 2
+    const date = ""
 
-    fetch(`http://localhost:8080/comment/post/${val.postId}`,{
+    const card = val.postId
+
+    fetch(`http://localhost:8080/comment`,{
       method: "POST",
       headers: {
           'Content-Type': 'application/json',
@@ -54,7 +57,9 @@ export const PostPage = (props) => {
       },
       body: JSON.stringify(({
           text,
-          reactions
+          reactions,
+          date,
+          card
       }))
   })
    .then((res) => res.json())
