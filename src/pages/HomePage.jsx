@@ -1,4 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+import { PostCard } from "../components/PostCard";
 import "./homePage.scss";
 import { ReactComponent as HomeIcon } from "../assets/home.svg";
 import profilePicture from "../assets/pp.webp";
@@ -36,9 +40,19 @@ import { ReactComponent as ConfigIcon } from "../assets/configIcon.svg"
 
 import "../App.scss";
 
-export const HomePage = () => {
+export const HomePage = (props) => {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:8080/post")
+    .then((res) => res.json())
+    .then((data) => {
+      setPosts(data.data.posts)
+    })
+  }, [])
+
   return (
-    <DefaultLayout>
+    <DefaultLayout token={props.token} setToken={props.setToken}>
       <section className="layout">
         <aside className="navbars">
           <nav className="navbar">
@@ -205,230 +219,42 @@ export const HomePage = () => {
         </aside>
         <main>
           <ul className="feed">
-            <li>
-              <article className="post">
-                <img
-                  className="post__image"
-                  src={profilePicture}
-                  alt="User avatar"
-                />
-                <section>
-                  <section className="post__user">
-                    <p>Suraj Vishwakarma</p>
-                    <p className="post__user__time">Oct 24 (18 hours ago)</p>
-                  </section>
-                  <h3 className="post__title">
-                    Awesome Websites For UI/UX Inspiration
-                  </h3>
-                  <section className="post__tags">
-                    <div>#javascript</div>
-                    <div>#webdev</div>
-                    <div>#beginners</div>
-                  </section>
-                  <section className="post__interactions">
-                    <section>
-                      <button>153 Reactions</button>
-                      <button>2 Comments</button>
-                    </section>
-                    <button className="post__interactions__reading">
-                      19 min read
-                    </button>
-                  </section>
-                </section>
-              </article>
-            </li>
-            <li>
-              <article className="post">
-                <img
-                  className="post__image"
-                  src={profilePicture}
-                  alt="User avatar"
-                />
-                <section>
-                  <section className="post__user">
-                    <p>Suraj Vishwakarma</p>
-                    <p className="post__user__time">Oct 24 (18 hours ago)</p>
-                  </section>
-                  <h3 className="post__title">
-                    Awesome Websites For UI/UX Inspiration
-                  </h3>
-                  <section className="post__tags">
-                    <div>#javascript</div>
-                    <div>#webdev</div>
-                    <div>#beginners</div>
-                  </section>
-                  <section className="post__interactions">
-                    <section>
-                      <button>153 Reactions</button>
-                      <button>2 Comments</button>
-                    </section>
-                    <button className="post__interactions__reading">
-                      19 min read
-                    </button>
-                  </section>
-                </section>
-              </article>
-            </li>
-            <li>
-              <article className="post">
-                <img
-                  className="post__image"
-                  src={profilePicture}
-                  alt="User avatar"
-                />
-                <section>
-                  <section className="post__user">
-                    <p>Suraj Vishwakarma</p>
-                    <p className="post__user__time">Oct 24 (18 hours ago)</p>
-                  </section>
-                  <h3 className="post__title">
-                    Awesome Websites For UI/UX Inspiration
-                  </h3>
-                  <section className="post__tags">
-                    <div>#javascript</div>
-                    <div>#webdev</div>
-                    <div>#beginners</div>
-                  </section>
-                  <section className="post__interactions">
-                    <section>
-                      <button>153 Reactions</button>
-                      <button>2 Comments</button>
-                    </section>
-                    <button className="post__interactions__reading">
-                      19 min read
-                    </button>
-                  </section>
-                </section>
-              </article>
-            </li>
-            <li>
-              <article className="post">
-                <img
-                  className="post__image"
-                  src={profilePicture}
-                  alt="User avatar"
-                />
-                <section>
-                  <section className="post__user">
-                    <p>Suraj Vishwakarma</p>
-                    <p className="post__user__time">Oct 24 (18 hours ago)</p>
-                  </section>
-                  <h3 className="post__title">
-                    Awesome Websites For UI/UX Inspiration
-                  </h3>
-                  <section className="post__tags">
-                    <div>#javascript</div>
-                    <div>#webdev</div>
-                    <div>#beginners</div>
-                  </section>
-                  <section className="post__interactions">
-                    <section>
-                      <button>153 Reactions</button>
-                      <button>2 Comments</button>
-                    </section>
-                    <button className="post__interactions__reading">
-                      19 min read
-                    </button>
-                  </section>
-                </section>
-              </article>
-            </li>
-            <li>
-              <article className="post">
-                <img
-                  className="post__image"
-                  src={profilePicture}
-                  alt="User avatar"
-                />
-                <section>
-                  <section className="post__user">
-                    <p>Suraj Vishwakarma</p>
-                    <p className="post__user__time">Oct 24 (18 hours ago)</p>
-                  </section>
-                  <h3 className="post__title">
-                    Awesome Websites For UI/UX Inspiration
-                  </h3>
-                  <section className="post__tags">
-                    <div>#javascript</div>
-                    <div>#webdev</div>
-                    <div>#beginners</div>
-                  </section>
-                  <section className="post__interactions">
-                    <section>
-                      <button>153 Reactions</button>
-                      <button>2 Comments</button>
-                    </section>
-                    <button className="post__interactions__reading">
-                      19 min read
-                    </button>
-                  </section>
-                </section>
-              </article>
-            </li>
-            <li>
-              <article className="post">
-                <img
-                  className="post__image"
-                  src={profilePicture}
-                  alt="User avatar"
-                />
-                <section>
-                  <section className="post__user">
-                    <p>Suraj Vishwakarma</p>
-                    <p className="post__user__time">Oct 24 (18 hours ago)</p>
-                  </section>
-                  <h3 className="post__title">
-                    Awesome Websites For UI/UX Inspiration
-                  </h3>
-                  <section className="post__tags">
-                    <div>#javascript</div>
-                    <div>#webdev</div>
-                    <div>#beginners</div>
-                  </section>
-                  <section className="post__interactions">
-                    <section>
-                      <button>153 Reactions</button>
-                      <button>2 Comments</button>
-                    </section>
-                    <button className="post__interactions__reading">
-                      19 min read
-                    </button>
-                  </section>
-                </section>
-              </article>
-            </li>
-            <li>
-              <article className="post">
-                <img
-                  className="post__image"
-                  src={profilePicture}
-                  alt="User avatar"
-                />
-                <section>
-                  <section className="post__user">
-                    <p>Suraj Vishwakarma</p>
-                    <p className="post__user__time">Oct 24 (18 hours ago)</p>
-                  </section>
-                  <h3 className="post__title">
-                    Awesome Websites For UI/UX Inspiration
-                  </h3>
-                  <section className="post__tags">
-                    <div>#javascript</div>
-                    <div>#webdev</div>
-                    <div>#beginners</div>
-                  </section>
-                  <section className="post__interactions">
-                    <section>
-                      <button>153 Reactions</button>
-                      <button>2 Comments</button>
-                    </section>
-                    <button className="post__interactions__reading">
-                      19 min read
-                    </button>
-                  </section>
-                </section>
-              </article>
-            </li>
+            {posts.map((post) => (
+                        <li>
+                        <article className="post">
+                          <img
+                            className="post__image"
+                            src={profilePicture}
+                            alt="User avatar"
+                          />
+                          <section>
+                            <section className="post__user">
+                              <p>{post.user.name}</p>
+                              <p className="post__user__time">{post.date}</p>
+                            </section>
+                            <Link to={`/post/${post._id}`}>
+                              <h3 className="post__title">
+                                {post.title}
+                              </h3>
+                            </Link>
+                            <section className="post__tags">
+                              {post.hashtags.map((tag) => (
+                                  <div>#{tag}</div>
+                              ))}
+                            </section>
+                            <section className="post__interactions">
+                              <section>
+                                <button>{post.reactions} Reactions</button>
+                                <button>2 Comments</button>
+                              </section>
+                              <button className="post__interactions__reading">
+                                {post.readingTime} min read
+                              </button>
+                            </section>
+                          </section>
+                        </article>
+                      </li>
+            ))}
           </ul>
         </main>
         <aside className="sidebar">

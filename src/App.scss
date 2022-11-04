@@ -7,6 +7,10 @@
   z-index:100;
 }
 
+.desktop-navbar__left__image{
+  display: flex;
+}
+
 .navbar__social-icons{
   padding-top: 1.8rem;
   padding-bottom: 1.8rem;
@@ -73,7 +77,7 @@
     }
     & button:not(&__create-post) {
       background-color: transparent;
-      border: none;
+
     }
     &__create-post {
       background-color: transparent;
@@ -83,10 +87,21 @@
       border-radius: 0.35rem;
       padding: 0.25rem 0.75rem;
     }
+    &__create-account {
+      background-color: transparent;
+      border: 1px solid var(--text-blue);
+      color: var(--text-blue);
+      border-radius: 0.35rem;
+      padding: 0.25rem 0.75rem;
+    }
     &__image {
       width: 2rem;
       height: 2rem;
       border-radius: 9999px;
+    }
+    &__button{
+      display: flex;
+      border: none;
     }
   }
 }
@@ -342,7 +357,10 @@
       flex-direction: row;
     }
   }
-
+  
+  .desktop-navbar__left__image{
+    display: block;
+  }
 
   .desktop-navbar__left__sidebar.showSidebar{
     width: 100%;

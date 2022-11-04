@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom"
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { ReactComponent as BellIcon } from "../assets/bell.svg";
 import { ReactComponent as HomeIcon } from "../assets/home.svg";
@@ -28,7 +29,7 @@ import { ReactComponent as GithubIcon } from "../assets/githubIcon.svg"
 import { ReactComponent as InstagramIcon } from "../assets/instagramIcon.svg"
 import { ReactComponent as TwitchIcon } from "../assets/twitchIcon.svg"
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -189,11 +190,13 @@ export const Navbar = () => {
               </ul>
             </section>
           </div>
+          <Link to="/">
           <img
             className="desktop-navbar__left__image"
             src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
             alt="Dev.to Logo"
           />
+          </Link>
           <div className="desktop-navbar__left__search ">
             <input type="text" placeholder="Search..." />
             <button>
@@ -202,24 +205,48 @@ export const Navbar = () => {
           </div>
         </section>
         <section className="desktop-navbar__actions">
-          <button className="desktop-navbar__actions__create-post">
-            Create Post
-          </button>
+          {props.token && (
+            <button className="desktop-navbar__actions__create-post">
+            <Link to="/create-post">Create Post</Link>
+            </button>
+          )}
+
           <div className="desktop-navbar__left__searchIcon">
             <button>
               <SearchIcon />
             </button>
           </div>
-          <button>
-            <BellIcon />
+          {!props.token && (
+            <button className="desktop-navbar__actions__create-account">
+                <Link to="/register">Create Account</Link>
+            </button>
+          )}
+
+          {props.token && (
+           <button className="desktop-navbar__actions__create-account" onClick={() => props.setToken(null)}>Log Out</button>
+          )}
+          {!props.token && (
+           <button className="desktop-navbar__actions__create-account" onClick={() => props.setToken(null)}>
+
+            <Link to="/login">
+              Log In
+            </Link>
           </button>
-          <button>
-            <img
-              className="desktop-navbar__actions__image h-8 w-8 rounded-full"
-              src="https://res.cloudinary.com/practicaldev/image/fetch/s--s6Axi-46--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/174537/25c17f15-3c29-4947-82dd-1a0b25eb6d21.png"
-              alt="User avatar"
-            />
-          </button>
+          )}
+          {props.token && (
+            <button className="desktop-navbar__actions__button">
+              <BellIcon />
+            </button>
+          )}
+          {props.token && (
+            <button className="desktop-navbar__actions__button">
+              <img
+                className="desktop-navbar__actions__image h-8 w-8 rounded-full"
+                src="https://res.cloudinary.com/practicaldev/image/fetch/s--s6Axi-46--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/174537/25c17f15-3c29-4947-82dd-1a0b25eb6d21.png"
+                alt="User avatar"
+              />
+            </button>
+          )}
         </section>
       </section>
     </nav>
