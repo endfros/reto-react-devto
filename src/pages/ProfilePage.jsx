@@ -8,8 +8,9 @@ import "./ProfilePage.scss";
 export const ProfilePage = (props) => {
   // const { token } = props;
   useEffect(() => {
-    fetch("http://localhost:8080/post?idUser=6349f4c2c7fdc3c53f06d59b")
-      // fetch("http://localhost:8080/posts", { headers: { Authorization: token } })
+    fetch("http://localhost:8080/post/me", {
+      headers: { Authorization: props.token },
+    })
       .then((res) => res.json())
       .then((res) => {
         setPosts(res.data.posts);
@@ -19,7 +20,9 @@ export const ProfilePage = (props) => {
         console.log(err.message);
       });
 
-    fetch("http://localhost:8080/writer/6349f4c2c7fdc3c53f06d59b")
+    fetch("http://localhost:8080/writer/me", {
+      headers: { Authorization: props.token },
+    })
       .then((res) => res.json())
       .then((res) => {
         setUser(res.data.users);
@@ -28,7 +31,9 @@ export const ProfilePage = (props) => {
         console.log(err.message);
       });
 
-    fetch("http://localhost:8080/comment?idUser=6349f4c2c7fdc3c53f06d59b")
+    fetch("http://localhost:8080/comment/me", {
+      headers: { Authorization: props.token },
+    })
       .then((res) => res.json())
       .then((res) => {
         setComments(res.data.comment.length);
